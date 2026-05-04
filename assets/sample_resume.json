@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "language": "zh",
+    "target_role": "后端开发工程师",
+    "style_hint": "professional"
+  },
+  "basic": {
+    "name": "彭海宁",
+    "title": "后端开发工程师",
+    "phone": "15200576941",
+    "email": "penghaining80@gmail.com",
+    "location": "中国",
+    "website": "",
+    "github": "",
+    "linkedin": ""
+  },
+  "education": [
+    {
+      "school": "华中师范大学 (211)",
+      "degree": "本科",
+      "major": "大数据管理与应用",
+      "start_date": "2023.09",
+      "end_date": "2027.06",
+      "honors": []
+    }
+  ],
+  "skills": {
+    "languages": ["Go", "Python", "SQL"],
+    "frameworks": ["Gin", "GORM", "gRPC", "Protobuf", "go-zero"],
+    "databases": ["MySQL", "Redis", "Kafka", "RabbitMQ"],
+    "infrastructure": ["Docker", "Kubernetes", "Etcd", "Linux", "GitHub Actions"],
+    "tools": [],
+    "other": ["TCP/IP", "HTTP/HTTPS", "Raft"]
+  },
+  "projects": [
+    {
+      "name": "高性能分布式撮合交易引擎",
+      "subtitle": "High-Performance Trading Engine",
+      "start_date": "2025.10",
+      "end_date": "2025.12",
+      "bullets": [
+        "设计并实现基于 Go 的高并发撮合交易系统，拆分订单管理、内存撮合与定序广播等核心模块。",
+        "采用跳表作为核心订单簿数据结构，并使用 Channel + Goroutine 构建异步流水线，单机吞吐量达到 10k+ TPS。",
+        "结合 MySQL 持久化、WAL 机制与 Redis 热点缓存，降低数据库读取压力并提升恢复能力。"
+      ]
+    },
+    {
+      "name": "分布式键值存储系统",
+      "subtitle": "MIT 6.824 Implementation",
+      "start_date": "2025.06",
+      "end_date": "2025.09",
+      "bullets": [
+        "完整实现基于 Raft 的高可用分布式 Key-Value 存储集群。",
+        "独立完成 Leader 选举、日志复制、持久化与快照压缩等核心能力。",
+        "通过 Log Index、Term 校验与幂等性设计保证线性一致读写。"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "中医药知识图谱竞赛",
+      "role": "项目实践",
+      "start_date": "2024.10",
+      "end_date": "2024.11",
+      "bullets": [
+        "围绕中医药非结构化文本构建知识图谱，支撑中医诊断与药物关联挖掘场景。",
+        "采用 AI 辅助编程模式快速完成数据清洗与实体抽取脚本开发，显著提升交付效率。",
+        "基于 Neo4j、BERT 与前端可视化实现药材关系图谱展示。"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "name": "中医药知识图谱竞赛奖项",
+      "issuer": "竞赛主办方",
+      "date": "2024.11",
+      "note": "如有明确奖项名称可替换。"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Polished Resume"
+  short_description: "Generate polished HTML-to-PDF resumes."
+  default_prompt: "Use $polished-resume to turn my raw resume materials into a polished PDF resume."

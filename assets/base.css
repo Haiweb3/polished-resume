@@ -1,0 +1,140 @@
+@page {
+  size: A4;
+  margin: 16mm 18mm 16mm 18mm;
+}
+
+:root {
+  --text: #2f2f2f;
+  --muted: #6d6d6d;
+  --accent: #2f6df6;
+  --line: #2f6df6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: #ffffff;
+  font-family: "Times New Roman", "Songti SC", "STSong", serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  width: 100%;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.hero-meta {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.hero-label {
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.headline {
+  margin: 10px 0 6px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.contact-line {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.section {
+  margin-bottom: 16px;
+}
+
+.section-title {
+  margin: 0 0 10px;
+  padding-bottom: 6px;
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: 700;
+  border-bottom: 3px solid var(--line);
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.row + .row {
+  margin-top: 10px;
+}
+
+.row-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.row-side {
+  color: var(--muted);
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+.item-title {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.item-subtitle {
+  font-weight: 600;
+}
+
+.text {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.bullet-list {
+  margin: 4px 0 0 0;
+  padding-left: 18px;
+}
+
+.bullet-list li {
+  font-size: 12px;
+  line-height: 1.55;
+  margin: 0 0 4px;
+}
+
+.skills-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.skills-list li {
+  font-size: 12px;
+  line-height: 1.55;
+  margin: 0 0 4px;
+}
+
+.label {
+  font-weight: 700;
+}
