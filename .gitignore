@@ -3,3 +3,6 @@ tmp/
 output/
 dist/
 *.log
+
+__pycache__/
+*.pyc
