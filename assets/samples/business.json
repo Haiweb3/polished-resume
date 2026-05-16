@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "language": "zh",
+    "target_role": "高级产品经理",
+    "template": "classic",
+    "industry": "business",
+    "style_hint": "professional"
+  },
+  "basic": {
+    "name": "王晓琳",
+    "title": "高级产品经理",
+    "phone": "+86 138 0000 0000",
+    "email": "wangxiaolin@example.com",
+    "location": "北京",
+    "website": "",
+    "github": "",
+    "linkedin": "linkedin.com/in/wangxiaolin"
+  },
+  "education": [
+    {
+      "school": "示例大学",
+      "degree": "硕士",
+      "major": "MBA",
+      "start_date": "2018.09",
+      "end_date": "2020.06",
+      "honors": []
+    },
+    {
+      "school": "示例大学",
+      "degree": "本科",
+      "major": "工商管理",
+      "start_date": "2012.09",
+      "end_date": "2016.06",
+      "honors": []
+    }
+  ],
+  "skills": {
+    "tools": ["Jira", "Confluence", "Figma", "Tableau", "SQL", "Mixpanel"],
+    "methodologies": ["OKR", "Scrum", "Design Sprint", "用户访谈", "A/B 测试"],
+    "domains": ["SaaS", "支付", "B 端中后台", "增长"],
+    "languages": ["中文 (母语)", "English (Fluent)"],
+    "certifications": ["PMP", "CSPO"],
+    "other": []
+  },
+  "projects": [
+    {
+      "name": "企业支付平台",
+      "subtitle": "B2B Payment Platform",
+      "start_date": "2023.01",
+      "end_date": "2024.06",
+      "bullets": [
+        "0 到 1 主导设计企业支付产品，上线 12 个月内 GMV 突破 8 亿。",
+        "梳理对账、风控、清算三大核心模块，将差错率从 0.8% 降至 0.05%。",
+        "推动 3 家头部银行接入，平均接入周期从 8 周缩短至 3 周。"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "示例金融科技公司",
+      "role": "高级产品经理",
+      "start_date": "2022.03",
+      "end_date": "至今",
+      "bullets": [
+        "负责支付与清算线条，管理 4 人产品团队，季度营收同比增长 65%。",
+        "牵头季度 OKR 制定，与研发、风控、运营三方协同，按时交付率达 92%。"
+      ]
+    },
+    {
+      "company": "示例咨询公司",
+      "role": "高级顾问",
+      "start_date": "2020.07",
+      "end_date": "2022.02",
+      "bullets": [
+        "服务 5 家金融客户的数字化转型项目，累计交付价值 ¥1.2 亿。"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "name": "公司年度最佳产品经理",
+      "issuer": "示例公司",
+      "date": "2023",
+      "note": ""
+    }
+  ]
+}

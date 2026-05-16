@@ -1,0 +1,102 @@
+@page {
+  size: A4;
+  margin: 20mm 22mm;
+}
+
+:root {
+  --text: #1a1a1a;
+  --muted: #555555;
+  --rule: #1a1a1a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: #ffffff;
+  font-family: "EB Garamond", "Georgia", "Songti SC", "STSong", serif;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.page { width: 100%; }
+
+.hero {
+  text-align: center;
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--rule);
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-variant: small-caps;
+}
+
+.headline {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text);
+}
+
+.contact-line {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.section { margin-bottom: 16px; }
+
+.section-title {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 4px;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.row + .row { margin-top: 8px; }
+.row-main { flex: 1; min-width: 0; }
+
+.row-side {
+  color: var(--muted);
+  white-space: nowrap;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.item-title {
+  margin: 0 0 3px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.item-subtitle { font-weight: 400; font-style: italic; }
+
+.text { margin: 0; font-size: 12px; }
+
+.bullet-list, .skills-list {
+  margin: 3px 0 0;
+  padding-left: 18px;
+}
+
+.bullet-list li, .skills-list li {
+  font-size: 12px;
+  margin: 0 0 3px;
+}
+
+.label { font-weight: 700; }

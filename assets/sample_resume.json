@@ -2,23 +2,25 @@
   "meta": {
     "language": "zh",
     "target_role": "后端开发工程师",
+    "template": "technical",
+    "industry": "tech",
     "style_hint": "professional"
   },
   "basic": {
-    "name": "彭海宁",
+    "name": "张明",
     "title": "后端开发工程师",
-    "phone": "15200576941",
-    "email": "penghaining80@gmail.com",
+    "phone": "+86 138 0000 0000",
+    "email": "zhangming@example.com",
     "location": "中国",
     "website": "",
-    "github": "",
+    "github": "github.com/zhangming",
     "linkedin": ""
   },
   "education": [
     {
-      "school": "华中师范大学 (211)",
+      "school": "示例大学 (211)",
       "degree": "本科",
-      "major": "大数据管理与应用",
+      "major": "计算机科学与技术",
       "start_date": "2023.09",
       "end_date": "2027.06",
       "honors": []
@@ -58,23 +60,23 @@
   ],
   "experience": [
     {
-      "company": "中医药知识图谱竞赛",
-      "role": "项目实践",
+      "company": "示例科技有限公司",
+      "role": "后端开发实习生",
       "start_date": "2024.10",
       "end_date": "2024.11",
       "bullets": [
-        "围绕中医药非结构化文本构建知识图谱，支撑中医诊断与药物关联挖掘场景。",
-        "采用 AI 辅助编程模式快速完成数据清洗与实体抽取脚本开发，显著提升交付效率。",
-        "基于 Neo4j、BERT 与前端可视化实现药材关系图谱展示。"
+        "参与订单中心微服务重构，将核心接口 P99 延迟从 320ms 降至 95ms。",
+        "落地基于 OpenTelemetry 的全链路追踪，覆盖 12 个核心服务。",
+        "推动接入压测平台，建立线上容量规划基线。"
       ]
     }
   ],
   "awards": [
     {
-      "name": "中医药知识图谱竞赛奖项",
-      "issuer": "竞赛主办方",
+      "name": "全国大学生算法竞赛 银奖",
+      "issuer": "示例组委会",
       "date": "2024.11",
-      "note": "如有明确奖项名称可替换。"
+      "note": ""
     }
   ]
 }

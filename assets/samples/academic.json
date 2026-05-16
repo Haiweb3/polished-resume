@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "language": "en",
+    "target_role": "PhD Candidate, Machine Learning",
+    "template": "classic",
+    "industry": "academic",
+    "style_hint": "professional"
+  },
+  "basic": {
+    "name": "Mei Chen",
+    "title": "PhD Candidate, Machine Learning",
+    "phone": "+1 555 000 0000",
+    "email": "mei.chen@example.edu",
+    "location": "Boston, MA",
+    "website": "meichen.example.edu",
+    "github": "github.com/meichen",
+    "linkedin": ""
+  },
+  "education": [
+    {
+      "school": "Example University",
+      "degree": "Ph.D.",
+      "major": "Computer Science (Machine Learning)",
+      "start_date": "2022.09",
+      "end_date": "Present",
+      "honors": ["Advisor: Prof. J. Doe", "GPA 3.95/4.0"]
+    },
+    {
+      "school": "Example University",
+      "degree": "B.S.",
+      "major": "Mathematics & Computer Science",
+      "start_date": "2018.09",
+      "end_date": "2022.06",
+      "honors": ["Summa Cum Laude"]
+    }
+  ],
+  "skills": {
+    "research_areas": ["Robustness", "Causal Inference", "Self-Supervised Learning"],
+    "methods": ["Variational Inference", "Contrastive Learning", "Bayesian Optimization"],
+    "tools": ["PyTorch", "JAX", "Hugging Face", "Slurm", "LaTeX"],
+    "publications": ["NeurIPS 2024", "ICML 2024", "ICLR 2023"],
+    "languages": ["English (Native)", "Mandarin (Native)"],
+    "other": []
+  },
+  "projects": [
+    {
+      "name": "Robust Self-Supervised Representations",
+      "subtitle": "Thesis Project",
+      "start_date": "2023.01",
+      "end_date": "Present",
+      "bullets": [
+        "Proposed contrastive objective robust to distribution shift; +6.4 pts on WILDS benchmark.",
+        "Released open-source codebase used by 3 follow-up papers.",
+        "Co-authored with 2 collaborators across Example University and Example Lab."
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Example Research Lab",
+      "role": "Research Intern",
+      "start_date": "2024.06",
+      "end_date": "2024.09",
+      "bullets": [
+        "Investigated scaling laws for instruction-tuned vision-language models.",
+        "Results contributed to one paper under submission at CVPR 2025."
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "name": "NSF Graduate Research Fellowship",
+      "issuer": "National Science Foundation",
+      "date": "2023",
+      "note": ""
+    }
+  ]
+}
