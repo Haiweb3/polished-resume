@@ -31,10 +31,13 @@ body {
 
 .hero-label {
   font-size: 11px;
-  letter-spacing: 0.22em;
   color: var(--muted);
-  text-transform: uppercase;
   margin-bottom: 12px;
+}
+
+:lang(en) .hero-label {
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
 h1 {
@@ -62,8 +65,12 @@ h1 {
 .section-title {
   margin: 0 0 12px;
   color: var(--accent);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
+}
+
+:lang(en) .section-title {
+  font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
 }

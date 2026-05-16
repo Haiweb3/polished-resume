@@ -37,11 +37,15 @@ body {
 }
 
 .hero-label {
+  font-size: 12px;
+  opacity: 0.85;
+  margin-bottom: 10px;
+}
+
+:lang(en) .hero-label {
   font-size: 11px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  opacity: 0.85;
-  margin-bottom: 10px;
 }
 
 h1 {
@@ -73,8 +77,12 @@ h1 {
   border-radius: 4px;
   background: var(--accent-soft);
   color: var(--accent);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
+}
+
+:lang(en) .section-title {
+  font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
