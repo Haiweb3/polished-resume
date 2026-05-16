@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "language": "zh",
+    "target_role": "高级UI设计师",
+    "template": "modern",
+    "industry": "design",
+    "style_hint": "modern"
+  },
+  "basic": {
+    "name": "李雨桐",
+    "title": "高级UI设计师",
+    "phone": "+86 138 0000 0000",
+    "email": "liyutong@example.com",
+    "location": "上海",
+    "website": "liyutong.design",
+    "github": "",
+    "linkedin": ""
+  },
+  "education": [
+    {
+      "school": "示例美术学院",
+      "degree": "本科",
+      "major": "视觉传达设计",
+      "start_date": "2018.09",
+      "end_date": "2022.06",
+      "honors": ["优秀毕业作品"]
+    }
+  ],
+  "skills": {
+    "software": ["Figma", "Sketch", "Adobe XD", "Photoshop", "Illustrator", "After Effects"],
+    "specialties": ["移动端 UI", "B 端中后台", "品牌视觉", "设计系统"],
+    "output": ["高保真原型", "可交付设计稿", "组件库", "Design Token"],
+    "methodology": ["用户旅程", "可用性测试", "设计评审", "WCAG 可访问性"],
+    "tools": ["Notion", "Miro", "ProtoPie"],
+    "other": []
+  },
+  "projects": [
+    {
+      "name": "金融 App 改版",
+      "subtitle": "Mobile Redesign",
+      "start_date": "2024.05",
+      "end_date": "2024.10",
+      "bullets": [
+        "主导首页与交易流程的信息架构重构，关键路径转化率提升 23%。",
+        "搭建覆盖 80+ 组件的设计系统，前端复用率从 40% 提升至 85%。",
+        "组织 6 轮可用性测试，发现并修复 27 个交互阻塞点。"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "示例互联网公司",
+      "role": "高级 UI 设计师",
+      "start_date": "2022.07",
+      "end_date": "至今",
+      "bullets": [
+        "负责核心产品 iOS/Android 端视觉与交互设计，月活 500 万+。",
+        "建立设计-研发协作规范，平均交付周期从 3 周缩短至 10 天。"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "name": "Red Dot Design Award",
+      "issuer": "Red Dot",
+      "date": "2023",
+      "note": "Brand & Communication Design"
+    }
+  ]
+}

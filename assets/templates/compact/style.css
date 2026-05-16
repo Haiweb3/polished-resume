@@ -1,0 +1,102 @@
+@page {
+  size: A4;
+  margin: 12mm 14mm;
+}
+
+:root {
+  --text: #1f1f1f;
+  --muted: #6a6a6a;
+  --accent: #1f1f1f;
+  --rule: #c8c8c8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: #ffffff;
+  font-family: "Helvetica Neue", "Helvetica", "PingFang SC", "Hiragino Sans GB", "Arial", sans-serif;
+  font-size: 10.5px;
+  line-height: 1.45;
+}
+
+.page { width: 100%; }
+
+.hero {
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+
+h1 {
+  margin: 0 0 2px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.headline {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.contact-inline {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.section { margin-bottom: 10px; }
+
+.section-title {
+  margin: 0 0 5px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.row + .row { margin-top: 5px; }
+.row-main { flex: 1; min-width: 0; }
+
+.row-side {
+  color: var(--muted);
+  white-space: nowrap;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+.item-title {
+  margin: 0 0 2px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.item-subtitle { font-weight: 500; color: var(--muted); }
+
+.text { margin: 0; font-size: 10.5px; }
+
+.bullet-list, .skills-list {
+  margin: 2px 0 0;
+  padding-left: 14px;
+}
+
+.bullet-list li, .skills-list li {
+  font-size: 10.5px;
+  line-height: 1.4;
+  margin: 0 0 2px;
+}
+
+.label { font-weight: 700; }
