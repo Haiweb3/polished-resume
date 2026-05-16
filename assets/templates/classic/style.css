@@ -33,6 +33,9 @@ h1 {
   margin: 0 0 6px;
   font-size: 28px;
   font-weight: 700;
+}
+
+:lang(en) h1 {
   letter-spacing: 0.06em;
   font-variant: small-caps;
 }
@@ -54,12 +57,16 @@ h1 {
 
 .section-title {
   margin: 0 0 8px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
   border-bottom: 1px solid var(--rule);
   padding-bottom: 4px;
+}
+
+:lang(en) .section-title {
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .row {
