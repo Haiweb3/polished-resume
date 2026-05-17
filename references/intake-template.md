@@ -20,6 +20,9 @@ Use this template when the user is starting from scratch.
 - Target Level:
 - Language: zh / en
 - Style Hint: professional / modern / concise
+- Template: technical / modern / classic / compact / creative
+- Industry: tech / design / business / academic / marketing
+- Section Order: education, skills, projects, experience, awards
 
 ## Education
 ### Education 1

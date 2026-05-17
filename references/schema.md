@@ -11,7 +11,8 @@ Normalized rendering schema used by `scripts/render_resume.py`.
     "target_role": "",
     "template": "technical",
     "industry": "tech",
-    "style_hint": "professional"
+    "style_hint": "professional",
+    "section_order": []
   },
   "basic": {
     "name": "",
@@ -40,6 +41,7 @@ Two independent axes drive the output:
 | `language` | `zh`, `en` | Section labels and skill category labels. Defaults to `zh`. Unknown values warn and fall back to `zh`. |
 | `template` | `technical`, `modern`, `classic`, `compact`, `creative` | Visual style only (typography, colors, spacing). Defaults to `technical`. |
 | `industry` | `tech`, `design`, `business`, `academic`, `marketing` | Skill category keys and section order. Defaults to `tech`. |
+| `section_order` | list of `education`, `skills`, `projects`, `experience`, `awards` | Optional explicit section order override. Duplicate items are ignored after the first appearance. |
 
 `template` and `industry` are orthogonal — any combination is valid.
 
@@ -56,6 +58,7 @@ The shape of `skills` depends on `meta.industry`:
 | `marketing` | `channels`, `content`, `analytics`, `platforms`, `tools`, `other` |
 
 Empty categories are dropped. Unknown keys are still rendered, with the key itself (Title Cased) used as the label.
+If `skills` is a flat string list instead of an object, it is normalized into the `other` category.
 
 ## Education item
 
@@ -82,6 +85,8 @@ Empty categories are dropped. Unknown keys are still rendered, with the key itse
 }
 ```
 
+`bullets` may be either a string or a string list. Single strings are normalized into a one-item list.
+
 ## Experience item
 
 ```json
@@ -93,6 +98,8 @@ Empty categories are dropped. Unknown keys are still rendered, with the key itse
   "bullets": []
 }
 ```
+
+`bullets` may be either a string or a string list. Single strings are normalized into a one-item list.
 
 ## Awards item
 
@@ -111,3 +118,4 @@ Empty categories are dropped. Unknown keys are still rendered, with the key itse
 - Use simple strings for date ranges when the source is inconsistent.
 - Empty sections are omitted; no placeholder headings.
 - Prefer concise section payloads to protect one-page output.
+- Contact info in the header may include `email`, `phone`, `location`, `website`, `github`, `linkedin`, and `meta.target_role`.

@@ -23,6 +23,7 @@ Accept any of these inputs:
 - scattered notes about experience, projects, education, and skills
 
 Normalize unstructured material into the schema in `references/schema.md` before rendering.
+If the user already filled the markdown intake, you can convert it with `python3 scripts/intake_to_json.py input.md output.json`.
 
 ### 2. Pick template and industry
 
@@ -52,6 +53,7 @@ Create a clean intermediate JSON before touching the template.
 
 - Use `references/schema.md` for the target structure.
 - Make `meta.template` and `meta.industry` explicit even if defaulted.
+- Set `meta.section_order` if you need a non-default section sequence.
 - Drop low-signal filler, repeated phrases, and vague self-evaluation.
 - Prefer measurable impact, scope, ownership, and technical depth.
 
@@ -78,6 +80,7 @@ The renderer:
 - inlines the chosen template's CSS into one self-contained HTML file
 - escapes unsafe HTML
 - drops empty sections
+- validates and normalizes common shape mistakes before rendering
 - warns (does not fail) on unknown template / industry / language and falls back to defaults
 
 ### 6. Export to PDF
@@ -126,6 +129,7 @@ Read only what you need:
 ## Scripts and assets
 
 - `scripts/render_resume.py`: render HTML from structured JSON
+- `scripts/intake_to_json.py`: convert a filled markdown intake into JSON
 - `scripts/export_pdf.js`: print HTML to PDF with headless Chrome
 - `assets/templates/<name>/template.html` + `style.css`: visual templates
 - `assets/sample_resume.json`: minimal tech example

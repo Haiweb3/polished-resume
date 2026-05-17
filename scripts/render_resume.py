@@ -97,6 +97,18 @@ LABELS = {
     },
 }
 
+SECTION_KEYS = ("education", "skills", "projects", "experience", "awards")
+SECTION_ITEM_FIELDS = {
+    "education": ("school", "degree", "major", "start_date", "end_date"),
+    "projects": ("name", "subtitle", "start_date", "end_date"),
+    "experience": ("company", "role", "start_date", "end_date"),
+    "awards": ("name", "issuer", "date", "note"),
+}
+
+
+class ValidationError(ValueError):
+    """Raised when resume JSON shape is invalid."""
+
 
 def escape(value):
     return html.escape(str(value), quote=True)
@@ -104,6 +116,143 @@ def escape(value):
 
 def compact(items):
     return [item for item in items if item]
+
+
+def normalize_string(value, field_name):
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        return value.strip()
+    raise ValidationError(f"{field_name} must be a string")
+
+
+def normalize_string_list(value, field_name):
+    if value is None:
+        return []
+    if isinstance(value, str):
+        value = [value]
+    if not isinstance(value, list):
+        raise ValidationError(f"{field_name} must be a list of strings")
+
+    normalized = []
+    for index, item in enumerate(value):
+        if item is None:
+            continue
+        if not isinstance(item, str):
+            raise ValidationError(f"{field_name}[{index}] must be a string")
+        item = item.strip()
+        if item:
+            normalized.append(item)
+    return normalized
+
+
+def normalize_mapping(value, field_name):
+    if value is None:
+        return {}
+    if isinstance(value, dict):
+        return value
+    raise ValidationError(f"{field_name} must be an object")
+
+
+def normalize_section_items(items, section_name):
+    if items is None:
+        return []
+    if not isinstance(items, list):
+        raise ValidationError(f"{section_name} must be a list")
+
+    normalized = []
+    for index, item in enumerate(items):
+        if not isinstance(item, dict):
+            raise ValidationError(f"{section_name}[{index}] must be an object")
+        row = {}
+        for field_name in SECTION_ITEM_FIELDS[section_name]:
+            row[field_name] = normalize_string(item.get(field_name), f"{section_name}[{index}].{field_name}")
+        if section_name == "education":
+            row["honors"] = normalize_string_list(item.get("honors"), f"{section_name}[{index}].honors")
+        elif section_name in ("projects", "experience"):
+            row["bullets"] = normalize_string_list(item.get("bullets"), f"{section_name}[{index}].bullets")
+        if has_visible_content(row):
+            normalized.append(row)
+    return normalized
+
+
+def normalize_skills(skills):
+    if skills is None:
+        return {}
+    if isinstance(skills, list):
+        return {"other": normalize_string_list(skills, "skills")}
+    if not isinstance(skills, dict):
+        raise ValidationError("skills must be an object or a list of strings")
+
+    normalized = {}
+    for key, value in skills.items():
+        if not isinstance(key, str):
+            raise ValidationError("skills keys must be strings")
+        values = normalize_string_list(value, f"skills.{key}")
+        if values:
+            normalized[key.strip()] = values
+    return normalized
+
+
+def normalize_section_order(meta):
+    section_order = meta.get("section_order")
+    if section_order is None:
+        return None
+    if not isinstance(section_order, list):
+        raise ValidationError("meta.section_order must be a list")
+
+    normalized = []
+    seen = set()
+    for index, item in enumerate(section_order):
+        if not isinstance(item, str):
+            raise ValidationError(f"meta.section_order[{index}] must be a string")
+        name = item.strip().lower()
+        if name not in SECTION_KEYS:
+            raise ValidationError(
+                "meta.section_order contains unknown section "
+                f"{item!r}; expected one of {', '.join(SECTION_KEYS)}"
+            )
+        if name in seen:
+            continue
+        seen.add(name)
+        normalized.append(name)
+    return normalized
+
+
+def normalize_resume(data):
+    if not isinstance(data, dict):
+        raise ValidationError("top-level JSON must be an object")
+
+    meta_raw = normalize_mapping(data.get("meta"), "meta")
+    basic_raw = normalize_mapping(data.get("basic"), "basic")
+
+    meta = {}
+    for field_name in ("language", "target_role", "template", "industry", "style_hint"):
+        meta[field_name] = normalize_string(meta_raw.get(field_name), f"meta.{field_name}")
+    meta["section_order"] = normalize_section_order(meta_raw)
+
+    basic = {}
+    for field_name in ("name", "title", "phone", "email", "location", "website", "github", "linkedin"):
+        basic[field_name] = normalize_string(basic_raw.get(field_name), f"basic.{field_name}")
+
+    return {
+        "meta": meta,
+        "basic": basic,
+        "education": normalize_section_items(data.get("education"), "education"),
+        "skills": normalize_skills(data.get("skills")),
+        "projects": normalize_section_items(data.get("projects"), "projects"),
+        "experience": normalize_section_items(data.get("experience"), "experience"),
+        "awards": normalize_section_items(data.get("awards"), "awards"),
+    }
+
+
+def has_visible_content(item):
+    for value in item.values():
+        if isinstance(value, list) and value:
+            return True
+        if isinstance(value, str) and value.strip():
+            return True
+    return False
 
 
 def format_date_range(start, end):
@@ -236,9 +385,13 @@ def render_awards(items, labels):
 
 def build_contact_line(basic, meta):
     parts = compact([
-        basic.get("email", "").strip(),
-        basic.get("phone", "").strip(),
-        meta.get("target_role", "").strip(),
+        basic.get("email", ""),
+        basic.get("phone", ""),
+        basic.get("location", ""),
+        basic.get("website", ""),
+        basic.get("github", ""),
+        basic.get("linkedin", ""),
+        meta.get("target_role", ""),
     ])
     return " · ".join(escape(x) for x in parts)
 
@@ -269,11 +422,13 @@ def resolve_industry(meta):
 
 def load_json(path):
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        return normalize_resume(json.loads(path.read_text(encoding="utf-8")))
     except FileNotFoundError:
         sys.exit(f"error: input file not found: {path}")
     except json.JSONDecodeError as exc:
         sys.exit(f"error: invalid JSON in {path}: {exc.msg} (line {exc.lineno}, col {exc.colno})")
+    except ValidationError as exc:
+        sys.exit(f"error: invalid resume schema in {path}: {exc}")
 
 
 def load_text(path, kind):
@@ -282,7 +437,7 @@ def load_text(path, kind):
     return path.read_text(encoding="utf-8")
 
 
-def render_sections(data, labels, industry):
+def render_sections(data, labels, industry, section_order):
     sections = {
         "education": render_education(data.get("education", []), labels),
         "skills": render_skills(data.get("skills", {}), labels, industry["skill_keys"]),
@@ -292,12 +447,13 @@ def render_sections(data, labels, industry):
         "experience": render_experience(data.get("experience", []), labels),
         "awards": render_awards(data.get("awards", []), labels),
     }
-    return "\n".join(sections[name] for name in industry["section_order"])
+    return "\n".join(sections[name] for name in section_order)
 
 
 def render(data, skill_root):
-    basic = data.get("basic") or {}
-    meta = data.get("meta") or {}
+    data = normalize_resume(data)
+    basic = data["basic"]
+    meta = data["meta"]
 
     if not basic.get("name"):
         print("warning: basic.name is empty; header will render without a name", file=sys.stderr)
@@ -307,12 +463,13 @@ def render(data, skill_root):
     industry_name = resolve_industry(meta)
     labels = LABELS[lang]
     industry = INDUSTRIES[industry_name]
+    section_order = meta.get("section_order") or industry["section_order"]
 
     template_dir = skill_root / "assets" / "templates" / template_name
     template = load_text(template_dir / "template.html", f"template {template_name!r}")
     css = load_text(template_dir / "style.css", f"stylesheet for {template_name!r}")
 
-    sections_html = render_sections(data, labels, industry)
+    sections_html = render_sections(data, labels, industry, section_order)
 
     replacements = {
         "{{lang}}": "en" if lang == "en" else "zh-CN",

@@ -50,6 +50,10 @@ function main() {
 
   const inputPath = path.resolve(inputHtml);
   const outputPath = path.resolve(outputPdf);
+  if (!fs.existsSync(inputPath)) {
+    console.error(`Input HTML not found: ${inputPath}`);
+    process.exit(1);
+  }
   const userDataDir = fs.mkdtempSync(path.join(os.tmpdir(), "polished-resume-chrome-"));
 
   const result = spawnSync(
@@ -67,7 +71,7 @@ function main() {
       pathToFileURL(inputPath).href
     ],
     {
-      stdio: "inherit"
+      encoding: "utf8"
     }
   );
 
@@ -76,6 +80,13 @@ function main() {
   if (result.error) {
     console.error(result.error.message);
     process.exit(1);
+  }
+
+  if (result.status !== 0) {
+    const details = [result.stdout, result.stderr].filter(Boolean).join("\n").trim();
+    if (details) {
+      console.error(details);
+    }
   }
 
   process.exit(result.status ?? 1);

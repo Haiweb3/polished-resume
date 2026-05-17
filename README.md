@@ -6,9 +6,12 @@ A skill for generating polished PDF resumes with an `HTML -> PDF` pipeline. Work
 
 Instead of fighting Word, this skill treats structured resume data as the source of truth, renders a clean HTML layout with a chosen template, and exports a stable A4 PDF via headless Chrome.
 
+Detailed usage is in [USAGE.md](./USAGE.md).
+
 ## What it does
 
 - Normalizes raw resume materials into a structured spec
+- Converts markdown intake sheets into structured JSON
 - Rewrites content into tighter, result-oriented bullets
 - Renders one of **5 visual templates × 5 industry presets** to HTML
 - Exports the final resume to PDF
@@ -40,7 +43,8 @@ Set them in your JSON:
   "meta": {
     "language": "zh",
     "template": "modern",
-    "industry": "design"
+    "industry": "design",
+    "section_order": ["projects", "experience", "skills", "education", "awards"]
   }
 }
 ```
@@ -89,6 +93,21 @@ node scripts/export_pdf.js /tmp/resume.html /tmp/resume.pdf
 
 The HTML is self-contained (CSS is inlined), so you can also open `/tmp/resume.html` directly in a browser.
 
+The renderer validates and normalizes input. If the JSON shape is wrong, it exits with a clear schema error instead of a Python traceback.
+
+### Intake to JSON
+
+You can also start from a filled markdown intake:
+
+```bash
+cp references/intake-template.md /tmp/resume-intake.md
+# edit /tmp/resume-intake.md with candidate info
+
+python3 scripts/intake_to_json.py /tmp/resume-intake.md /tmp/resume.json
+python3 scripts/render_resume.py /tmp/resume.json /tmp/resume.html
+node scripts/export_pdf.js /tmp/resume.html /tmp/resume.pdf
+```
+
 ### Industry samples
 
 Each industry preset ships with a realistic example under `assets/samples/`:
@@ -108,6 +127,7 @@ The renderer expects structured JSON. Start from:
 - `assets/samples/*.json` — per-industry examples
 - `references/schema.md` — full schema reference
 - `references/intake-template.md` — markdown intake for new candidates
+- `USAGE.md` — end-to-end setup and usage
 
 ## Project layout
 
@@ -134,9 +154,11 @@ polished-resume/
 │   ├── writing-rules.md
 │   └── template-notes.md
 ├── scripts/
+│   ├── intake_to_json.py
 │   ├── render_resume.py
 │   └── export_pdf.js
 └── tests/
+    ├── test_intake.py
     └── test_render.py
 ```
 
