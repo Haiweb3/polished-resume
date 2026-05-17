@@ -162,10 +162,6 @@ polished-resume/
     └── test_render.py
 ```
 
-## Preview
-
-![Preview](assets/preview.png)
-
 ## Testing
 
 ```bash
