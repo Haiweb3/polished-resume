@@ -172,6 +172,21 @@ polished-resume/
 python3 -m unittest discover -s tests
 ```
 
+## Demo commands
+
+```bash
+make test
+make demo-html
+make demo-pdf
+make demo
+```
+
+Default output path is `/tmp/polished-resume-demo`. Override it if needed:
+
+```bash
+make demo OUT_DIR=/tmp/my-resume-demo
+```
+
 CI runs on every push and pull request across Python 3.10 / 3.11 / 3.12.
 
 ## Scope

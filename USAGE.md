@@ -190,3 +190,18 @@ After PDF export, verify:
 - no weak or repetitive bullets
 
 If layout is crowded, shorten content before reducing type size.
+
+## 7. Shortcut commands
+
+For a fast local smoke test:
+
+```bash
+make test
+make demo
+```
+
+Useful targets:
+
+- `make demo-json`
+- `make demo-html`
+- `make demo-pdf`
